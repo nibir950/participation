@@ -1,2 +1,13 @@
-.env
 node_modules/
+client/dist/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+artifacts/
+test-results/
+.DS_Store
+
+# Local runtime history (the ZIP includes an empty seed file)
+data/run-history.json

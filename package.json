@@ -1,19 +1,28 @@
 {
-  "name": "gridwise-hackathon",
+  "name": "gridwise-mern",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "node scripts/dev.mjs",
+    "dev:server": "node --watch server/src/index.js",
+    "dev:client": "npm run dev --workspace client",
+    "start": "node server/src/index.js",
+    "build": "npm run build --workspace client",
+    "test": "node --test server/test/*.test.js",
+    "test:samples": "node scripts/test-samples.mjs",
+    "test:live": "node scripts/test-live.mjs",
+    "check": "npm test && npm run test:samples && npm run build"
+  },
   "dependencies": {
-    "dotenv": "^18.0.0",
-    "express": "^5.2.1",
-    "javascript-lp-solver": "^1.0.3",
-    "openai": "^7.18.0",
-    "zod": "^4.6.5"
+    "express": "5.2.1",
+    "javascript-lp-solver": "1.0.3"
   }
 }

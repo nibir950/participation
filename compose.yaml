@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    ports:
+      - "4001:4001"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4001
+      HISTORY_FILE: /app/data/run-history.json
+      # Defaults to the Gemini OpenAI-compatible endpoint.
+      LLM_BASE_URL: ${LLM_DOCKER_BASE_URL:-https://generativelanguage.googleapis.com/v1beta/openai}
+    volumes:
+      - gridwise-history:/app/data
+    restart: unless-stopped
+
+volumes:
+  gridwise-history:
